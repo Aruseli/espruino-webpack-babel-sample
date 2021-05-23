@@ -47,4 +47,4 @@ async function test() {
   console.log(`After 2 seconds, promise results: ${a} ${b}`);
 }
 global.test = test;
-
+test();
