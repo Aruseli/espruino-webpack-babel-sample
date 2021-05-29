@@ -28,7 +28,11 @@
     "espruino": "0.1.6",
     "fast-async": "6.3.1",
     "uglifyjs-webpack-plugin": "1.2.4",
+    "uniqid": "^5.3.0",
     "webpack": "4.4.1",
     "webpack-cli": "2.0.13"
+  },
+  "devDependencies": {
+    "webpack-bundle-analyzer": "^4.4.2"
   }
 }

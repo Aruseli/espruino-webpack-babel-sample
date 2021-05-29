@@ -5,6 +5,8 @@
  *
  * > test()
  */
+import uniqid from 'uniqid';
+
 async function test() {
   // Block scoping
   let value = 'is-outside';
@@ -45,6 +47,11 @@ async function test() {
   const [a,b] = await Promise.all(['first-promise', Promise.resolve('second-promise')]);
   await wait(2000);
   console.log(`After 2 seconds, promise results: ${a} ${b}`);
+  await wait(2000);
+  const id = uniqid(); 
+  console.log('uniqid ' +id );
 }
+
 global.test = test;
 test();
+save();

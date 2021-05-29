@@ -1,9 +1,12 @@
 const path = require('path');
 const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const WebpackBundleAnalyzer = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
+let devMode = process.env.devMode || true;
 module.exports = {
   entry: ['./src/promise-fix.js', './src/entry.js'],
+  mode: devMode ? "development" : "production",
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'entry.bundle.js',
@@ -11,12 +14,13 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader'
-        }
-      }
+         use: {
+            loader:'babel-loader',
+            options: { presets: ['es2015'] }
+         },
+         test: /\.js$/,
+        //  exclude: /node_modules/
+      },
     ]
   },
   optimization: {
@@ -33,4 +37,7 @@ module.exports = {
       })
     ]
   },
+  plugins: [
+    new WebpackBundleAnalyzer()
+ ]
 };
